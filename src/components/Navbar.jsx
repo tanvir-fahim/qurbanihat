@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FaPaw } from 'react-icons/fa';
 
 const Navbar = () => {
-  const isLoggedIn = false; // Placeholder
+  const isLoggedIn = false;
 
   const navLinks = (
     <>
@@ -42,7 +42,6 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full border">
-                {/* Fixed Image component */}
                 <Image 
                   src="https://via.placeholder.com/40" 
                   alt="profile" 
