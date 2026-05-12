@@ -21,7 +21,7 @@ const Login = () => {
     }, {
       onSuccess: () => {
         toast.success("Welcome back!");
-        router.push("/");
+        window.location.href = "/";
       },
       onError: (ctx) => {
         toast.error(ctx.error.message);
@@ -36,8 +36,6 @@ const Login = () => {
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">Login</h2>
           
           <form onSubmit={handleLogin} className="space-y-6">
-            
-            {/* Email Fieldset Legend */}
             <fieldset className="border border-gray-300 rounded-lg px-3 pb-2">
               <legend className="text-xs font-bold text-orange-600 px-2 ml-2 uppercase">
                 Email Address
@@ -51,7 +49,6 @@ const Login = () => {
               />
             </fieldset>
 
-            {/* Password Fieldset Legend */}
             <fieldset className="border border-gray-300 rounded-lg px-3 pb-2 relative">
               <legend className="text-xs font-bold text-orange-600 px-2 ml-2 uppercase">
                 Secret Password
@@ -69,13 +66,13 @@ const Login = () => {
                   className="absolute right-4 top-3 text-gray-500 hover:text-orange-600"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                  {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
                 </button>
               </div>
             </fieldset>
 
             <button type="submit" className="btn btn-warning w-full shadow-md hover:scale-[1.02] transition-transform">
-              Access Account
+              Log In
             </button>
           </form>
 

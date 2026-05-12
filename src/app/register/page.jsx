@@ -89,7 +89,7 @@ const Register = () => {
                 <input 
                   name="password" 
                   type={showPassword ? "text" : "password"} 
-                  placeholder="••••••••" 
+                  placeholder="••••••••"
                   className="input w-full border-none focus:outline-none focus:ring-0 h-10 bg-transparent pr-10" 
                   required 
                 />
@@ -98,7 +98,7 @@ const Register = () => {
                   className="absolute right-4 top-3 text-gray-500 hover:text-orange-600"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                  {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
                 </button>
               </div>
             </fieldset>

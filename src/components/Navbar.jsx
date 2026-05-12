@@ -18,7 +18,7 @@ const Navbar = () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/login");
+          window.location.href = "/login";
         },
       },
     });
