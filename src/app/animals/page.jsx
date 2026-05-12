@@ -55,7 +55,8 @@ const AllAnimals = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {displayAnimals.map((animal) => (
-                        <div key={animal.id} className="card bg-base-100 shadow-xl overflow-hidden border">
+                        <div key={animal.id} className={`card bg-base-100 shadow-xl overflow-hidden border-b-5 ${animal.price > 100000 ? 'border-red-500' : 'border-green-500'
+                                        }`}>
                             <figure className="h-60 relative">
                                 <Image
                                     src={animal.image}
