@@ -1,9 +1,24 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaPaw } from 'react-icons/fa';
 
+import { authClient, useSession } from "@/lib/auth-client"; // Real Auth Client
+import { useRouter } from 'next/navigation';
+
 const Navbar = () => {
-  const isLoggedIn = false;
+  const { data: session, isPending } = useSession(); 
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login");
+        },
+      },
+    });
+  };
 
   const navLinks = (
     <>
@@ -37,29 +52,36 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end gap-2">
-        {isLoggedIn ? (
+      <div className="navbar-end">
+        {isPending ? (
+          <span className="loading loading-spinner loading-sm"></span>
+        ) : session ? (
+          /* --- LOGGED IN VIEW --- */
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full border">
-                <Image 
-                  src="https://via.placeholder.com/40" 
-                  alt="profile" 
-                  width={40} 
-                  height={40} 
+                <Image
+                  src={session.user.image || "https://via.placeholder.com/40"}
+                  alt="profile"
+                  width={40}
+                  height={40}
                 />
               </div>
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52">
+              <li className="px-4 py-2 font-bold text-orange-600 border-b">
+                {session.user.name}
+              </li>
               <li><Link href="/my-profile">My Profile</Link></li>
-              <li><button className="text-red-500">Logout</button></li>
+              <li><button onClick={handleLogout} className="text-red-500">Logout</button></li>
             </ul>
           </div>
         ) : (
-          <>
-            <Link href="/login" className="btn btn-ghost btn-sm flex">Login</Link>
+          /* --- LOGGED OUT VIEW --- */
+          <div className="flex gap-2">
+            <Link href="/login" className="btn btn-ghost btn-sm hidden sm:flex">Login</Link>
             <Link href="/register" className="btn btn-warning btn-sm">Register</Link>
-          </>
+          </div>
         )}
       </div>
     </div>

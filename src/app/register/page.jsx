@@ -34,8 +34,11 @@ const Register = () => {
         });
     };
 
-    const handleGoogleLogin = () => {
-        toast.info("Connecting to Google...");
+    const handleGoogleLogin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/my-profile", // Where to go after success
+        });
     };
 
     return (
