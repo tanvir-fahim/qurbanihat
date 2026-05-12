@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import LottieHover from "@/components/LottieHover";
+import lottieTips from "@/assets/lottieTips.json";
 
 export default function Home() {
   const [animals, setAnimals] = useState([]);
@@ -31,7 +33,7 @@ export default function Home() {
 
       <section className="py-16 px-8 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10">Featured Animals</h2>
-        
+
         {loading ? (
           <div className="flex justify-center py-10">
             <span className="loading loading-bars loading-lg text-warning"></span>
@@ -41,11 +43,11 @@ export default function Home() {
             {animals.map((animal) => (
               <div key={animal.id} className="card bg-base-100 shadow-xl hover:shadow-2xl transition">
                 <figure className="h-48 overflow-hidden">
-                  <Image 
-                    src={animal.image} 
-                    alt={animal.name} 
-                    width={400} 
-                    height={300} 
+                  <Image
+                    src={animal.image}
+                    alt={animal.name}
+                    width={400}
+                    height={300}
                     className="object-cover w-full h-full"
                   />
                 </figure>
@@ -65,7 +67,10 @@ export default function Home() {
 
       <section className="bg-orange-50 py-16 px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">Qurbani Preparation Tips</h2>
+          <div className="flex justify-center align-items-center gap-2">
+            <LottieHover animationData={lottieTips} size={40} />
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">Qurbani Preparation Tips</h2>
+          </div>
           <div className="grid md:grid-cols-2 gap-8 text-left">
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="font-bold text-orange-600 mb-2">Check Health</h3>

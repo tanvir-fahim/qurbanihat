@@ -4,10 +4,13 @@ import Image from 'next/image';
 import { FaPaw } from 'react-icons/fa';
 
 import { authClient, useSession } from "@/lib/auth-client";
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navbar = () => {
+
+  const pathname = usePathname();
+
   const { data: session, isPending } = useSession();
   const router = useRouter();
 
@@ -21,12 +24,10 @@ const Navbar = () => {
     });
   };
 
-  const navLinks = (
-    <>
-      <li><Link href="/">Home</Link></li>
-      <li><Link href="/animals">All Animals</Link></li>
-    </>
-  );
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "All Animals", path: "/animals" },
+  ];
 
   return (
     <div className="navbar bg-base-100 shadow-sm px-4 md:px-8 sticky top-0 z-50">
@@ -35,8 +36,17 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <GiHamburgerMenu />
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52 font-medium">
-            {navLinks}
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52 font-medium space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  href={link.path}
+                  className={pathname === link.path ? "text-blue-500 border-l-2 border-blue-500" : ""}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <Link href="/" className="flex items-center gap-2 text-xl font-bold">
@@ -47,7 +57,16 @@ const Navbar = () => {
 
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 font-medium gap-2">
-          {navLinks}
+          {navLinks.map((link) => (
+            <li key={link.path}>
+              <Link
+                href={link.path}
+                className={pathname === link.path ? "text-blue-500 border-b-2 border-blue-500" : ""}
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -82,7 +101,7 @@ const Navbar = () => {
                   <span className="block text-sm font-bold text-orange-600 truncate">{session.user.email}</span>
                 </li>
                 <div className="divider my-0"></div>
-                <li><Link href="/my-profile" className="py-3">My Profile</Link></li>
+                <li><Link href="/my-profile" className={`py-2 ${pathname === "/my-profile" ? "text-blue-500 font-bold border-l-2 border-blue-500" : ""}`}>My Profile</Link></li>
                 <li><button onClick={handleLogout} className="text-red-500 py-3 font-semibold">Logout</button></li>
               </ul>
             </div>
