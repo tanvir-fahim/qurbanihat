@@ -24,8 +24,9 @@ const MyProfile = () => {
               <Image 
                 src={session.user.image || "https://via.placeholder.com/150"} 
                 alt="Profile" 
-                width={128} 
-                height={128} 
+                width={300} 
+                height={300} 
+                priority
               />
             </div>
           </div>
