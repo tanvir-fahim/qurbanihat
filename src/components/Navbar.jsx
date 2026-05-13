@@ -24,7 +24,7 @@ const Navbar = () => {
           },
         },
       });
-    }, 1500);
+    }, 1000);
   };
 
   const navLinks = [

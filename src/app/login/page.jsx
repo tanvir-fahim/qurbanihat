@@ -21,7 +21,7 @@ const Login = () => {
         toast.success("Welcome back!");
         setTimeout(() => {
           window.location.href = "/";
-        }, 1500);
+        }, 1000);
       },
       onError: (ctx) => {
         toast.error(ctx.error.message);

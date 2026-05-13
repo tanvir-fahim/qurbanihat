@@ -28,7 +28,7 @@ const Register = () => {
         toast.success("Account Created! Please login.");
         setTimeout(() => {
           router.push("/login");
-        }, 1500);
+        }, 1000);
       },
       onError: (ctx) => {
         toast.error(ctx.error.message);
