@@ -5,6 +5,7 @@ import Image from "next/image";
 import LottieHover from "@/components/LottieHover";
 import lottieTips from "@/assets/lottieTips.json";
 import lottieFeature from "@/assets/lottieFeature.json";
+import { FaCheckCircle, FaShieldAlt, FaTruck } from "react-icons/fa";
 
 export default function Home() {
   const [animals, setAnimals] = useState([]);
@@ -112,6 +113,42 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="py-20 px-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+            Why Choose QurbaniHat?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 text-center">
+              <div className="flex justify-center mb-6 text-orange-600 text-3xl">
+                <FaCheckCircle />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Verified Farmers</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We strictly screen our sellers to ensure you receive healthy, well-cared-for animals.</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 text-center">
+              <div className="flex justify-center mb-6 text-orange-600 text-3xl">
+                <FaShieldAlt />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Health Guaranteed</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Every animal goes through a preliminary health check before being listed on our platform.</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 text-center">
+              <div className="flex justify-center mb-6 text-orange-600 text-3xl">
+                <FaTruck />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Easy Delivery</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Coordinate pickup or delivery easily with our integrated marketplace tools.</p>
+            </div>
+
+          </div>
         </div>
       </section>
     </div>
