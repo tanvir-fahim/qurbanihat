@@ -4,24 +4,27 @@ import Image from 'next/image';
 import { FaPaw } from 'react-icons/fa';
 
 import { authClient, useSession } from "@/lib/auth-client";
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
   const pathname = usePathname();
 
   const { data: session, isPending } = useSession();
-  const router = useRouter();
 
   const handleLogout = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          window.location.href = "/login";
+    toast.success("Logged out successfully");
+    setTimeout(async () => {
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            window.location.href = "/login";
+          },
         },
-      },
-    });
+      });
+    }, 1500);
   };
 
   const navLinks = [

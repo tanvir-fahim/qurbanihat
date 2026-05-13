@@ -21,10 +21,12 @@ const UpdateProfile = () => {
     }, {
       onSuccess: () => {
         toast.success("Profile updated successfully!");
-        setName("");
-        setImage("");
-        router.refresh();
-        router.push("/my-profile");
+        setTimeout(() => {
+          setName("");
+          setImage("");
+          router.refresh();
+          router.push("/my-profile");
+        }, 1500);
       },
       onError: (ctx) => {
         toast.error(ctx.error.message);

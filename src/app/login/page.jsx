@@ -2,13 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +19,9 @@ const Login = () => {
     }, {
       onSuccess: () => {
         toast.success("Welcome back!");
-        window.location.href = "/";
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1500);
       },
       onError: (ctx) => {
         toast.error(ctx.error.message);

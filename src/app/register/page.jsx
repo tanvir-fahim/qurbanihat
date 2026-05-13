@@ -26,7 +26,9 @@ const Register = () => {
     }, {
       onSuccess: () => {
         toast.success("Account Created! Please login.");
-        router.push("/login");
+        setTimeout(() => {
+          router.push("/login");
+        }, 1500);
       },
       onError: (ctx) => {
         toast.error(ctx.error.message);
@@ -89,7 +91,7 @@ const Register = () => {
                 <input 
                   name="password" 
                   type={showPassword ? "text" : "password"} 
-                  placeholder="••••••••"
+                  placeholder="Enter 8 or more characters"
                   className="input w-full border-none focus:outline-none focus:ring-0 h-10 bg-transparent pr-10" 
                   required 
                 />
