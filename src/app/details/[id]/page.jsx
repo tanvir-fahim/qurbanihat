@@ -53,7 +53,7 @@ const AnimalDetails = ({ params: paramsPromise }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
           <div className="rounded-3xl overflow-hidden shadow-2xl relative h-112 border-4 border-white">
-            <Image src={image} alt={name} fill className="object-cover" />
+            <Image src={image} alt={name} fill className="object-cover" priority/>
             <div className="absolute top-4 left-4 badge badge-warning p-4 font-bold shadow-lg">
               {category}
             </div>

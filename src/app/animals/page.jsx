@@ -63,6 +63,7 @@ const AllAnimals = () => {
                                     alt={animal.name}
                                     fill
                                     className="object-cover"
+                                    priority
                                 />
                             </figure>
                             <div className="card-body">

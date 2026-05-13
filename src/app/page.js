@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import LottieHover from "@/components/LottieHover";
 import lottieTips from "@/assets/lottieTips.json";
+import lottieFeature from "@/assets/lottieFeature.json";
 
 export default function Home() {
   const [animals, setAnimals] = useState([]);
@@ -32,7 +33,10 @@ export default function Home() {
       </div>
 
       <section className="py-16 px-8 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10">Featured Animals</h2>
+        <div className="flex justify-center align-items-center gap-2">
+          <LottieHover animationData={lottieFeature} size={40} />
+          <h2 className="text-3xl font-bold mb-6 text-gray-800">Featured Animals</h2>
+        </div>
 
         {loading ? (
           <div className="flex justify-center py-10">
@@ -49,6 +53,7 @@ export default function Home() {
                     width={400}
                     height={300}
                     className="object-cover w-full h-full"
+                    priority
                   />
                 </figure>
                 <div className="card-body p-5">
