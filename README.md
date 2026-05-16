@@ -6,7 +6,7 @@ QurbaniHat is a modern, transparent, and user-friendly online livestock marketpl
 The primary goal of QurbaniHat is to bridge the gap between farmers and buyers, providing a reliable platform where users can browse, compare, and connect with sellers to purchase healthy, high-quality animals without the hassle of traditional cattle markets.
 
 ## Live URL
-[Insert your Vercel URL here]
+https://qurbanihat-liart.vercel.app/
 
 ## Key Features
 - **Real-time Marketplace:** Browse a wide catalog of animals (cows, goats, bulls) with detailed specifications.
